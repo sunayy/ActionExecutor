@@ -1,5 +1,6 @@
 package com.github.sunayy.actionexec.executor;
 
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
@@ -36,6 +37,10 @@ public class Result<T, E extends Exception> {
     public void holdFailure(Consumer<E> consumer) {
         consumer.accept(this.failure);
     }
+
+    public Optional<T> unwrapSucceeded() { return Optional.ofNullable(this.succeeded); }
+
+    public Optional<E> unwrapFailure() { return Optional.ofNullable(this.failure); }
 
     public boolean isRight() { return this.failure == null; }
 }
