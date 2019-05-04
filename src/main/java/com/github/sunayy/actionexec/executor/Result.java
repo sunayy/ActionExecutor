@@ -42,5 +42,5 @@ public class Result<T, E extends Exception> {
 
     public Optional<E> unwrapFailure() { return Optional.ofNullable(this.failure); }
 
-    public boolean isRight() { return this.failure == null; }
+    public boolean isRight() { return this.failure == null && this.succeeded != null; }
 }
